@@ -9,18 +9,18 @@ addition1 = (n1: number, n2: number) => {
     return n1+n2;
 }
 
-interface Named {
+interface Named1 {
     name?: string
 }
 
-interface greetable extends Named {        //Interface can extend
-    name?: String;
+interface greetable1 extends Named1 {        //Interface can extend
+    name?: string;
     //age: number;
     greet (phrase: string): void;
 }
 
 //class Person2 implements greetable, Named {
-class Person22 implements greetable {    //person2 is forced to have both greet and name
+class Person22 implements greetable1 {    //person2 is forced to have both greet and name
     name?: string;                       //making name as optional
     age = 25;                              //can have extra objects
     constructor (n?: string) {  //or can pass default values also constructor(n: string = 'prabha')
@@ -38,7 +38,7 @@ class Person22 implements greetable {    //person2 is forced to have both greet 
     };
 }
 
-let user22: greetable;
+let user22: greetable1;
 
 user22 = new Person22();
 user22.greet("hello ")
