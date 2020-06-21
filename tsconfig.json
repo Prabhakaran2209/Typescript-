@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["DOM", "ES2015.Promise", "ES2015", "ES6","ScriptHost", "DOM.Iterable"],
+    "module": "commonjs",
+        "sourceMap": false,
+        "outDir": "./dist",
+        "rootDir": "./src",
+    }
+}
