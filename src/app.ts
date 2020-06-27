@@ -1,47 +1,27 @@
-//type addfn =  (a: number, b: number) => number
+type combine = string | number;   //union type
+type num = number | boolean;
 
-interface addfn {
-    (a: number, b: number): number;     //adding function as interface
+function add(a: number, b: number): number;
+function add(a: string, b:string): string;
+function add(a: number, b: string): string;            //function overloading
+function add (a: combined, b: combined) {
+    if(typeof a === 'string' || typeof b === 'string') {    //type gaurds
+        return a.toString() + b.toString();
+    }
+    else {
+        return a + b;
+    }
 }
 
-let addition1: addfn;
-addition1 = (n1: number, n2: number) => {
-    return n1+n2;
+const result = add ('tom', 'prabha');
+
+//optional chaining
+const fetchUserData = {
+    id: '1',
+    name: 'pk',
+    job: {title: 'CEO', branch: 'VDP'}
 }
+console.log(fetchUserData?.job?.title);  //normal way of printing
+//using optional parameter
+console.log(fetchUserData?.job?.title);  //does a if check if each parameter exist
 
-interface Named1 {
-    name?: string
-}
-
-interface greetable1 extends Named1 {        //Interface can extend
-    name?: string;
-    //age: number;
-    greet (phrase: string): void;
-}
-
-//class Person2 implements greetable, Named {
-class Person22 implements greetable1 {    //person2 is forced to have both greet and name
-    name?: string;                       //making name as optional
-    age = 25;                              //can have extra objects
-    constructor (n?: string) {  //or can pass default values also constructor(n: string = 'prabha')
-        if(n) {
-            this.name = n;
-        }   
-    }  
-    greet (phrase: string) {
-        if(this.name) {
-            console.log(phrase + this.name)
-        } else {
-            console.log('hello-no name provided')
-        }
-         
-    };
-}
-
-let user22: greetable1;
-
-user22 = new Person22();
-user22.greet("hello ")
-console.log(user22);
-
-    
